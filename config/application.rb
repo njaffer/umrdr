@@ -14,7 +14,7 @@ module Umrdr
     end
 
     # Deploy to /data instead of /
-    config.relative_url_root = '/data'
+#    config.relative_url_root = '/data'
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
