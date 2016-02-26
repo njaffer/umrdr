@@ -6,12 +6,11 @@ module CurationConcerns
     include Sufia::FileSetsController::BrowseEverything
 
    def create
-   byebug
-   if params[:selected_files].present?
-        create_from_browse_everything(params)
-      else
-        super
-   end
+     if params[:selected_files].present?
+       create_from_browse_everything(params)
+     else
+       super
+     end
    end 
 
    def create_from_upload(params)

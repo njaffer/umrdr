@@ -12,15 +12,14 @@ module Sufia::FileSetsController
 
     protected
 
-      def create_from_browse_everything(params)
-    byebug
-          upload_set_id = SecureRandom.uuid	
-        UploadSet.find_or_create(upload_set_id)
-        params[:selected_files].each_pair do |_index, file_info|
-          next if file_info.blank? || file_info["url"].blank?
-          create_file_from_url(file_info["url"], file_info["file_name"], parent)
-        end
-        redirect_to sufia.new_curation_concerns_generic_work_path
+    def create_from_browse_everything(params)
+      upload_set_id = SecureRandom.uuid	
+      UploadSet.find_or_create(upload_set_id)
+      params[:selected_files].each_pair do |_index, file_info|
+        next if file_info.blank? || file_info["url"].blank?
+        create_file_from_url(file_info["url"], file_info["file_name"], parent)
+      end
+      redirect_to [main_app, parent]
          
       end
 
