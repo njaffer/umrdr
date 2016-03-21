@@ -16,7 +16,16 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'capybara/poltergeist'
+require 'capybara/rspec'
+
+
+Capybara.default_driver = :rack_test      # This is a faster driver
+Capybara.javascript_driver = :poltergeist # This is slower
+#Capybara.default_wait_time = ENV['TRAVIS'] ? 30 : 15
+
 RSpec.configure do |config|
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -31,6 +40,8 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+  #config.include Capybara::RSpecMatchers, type: :input
+   config.include Capybara::DSL
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
