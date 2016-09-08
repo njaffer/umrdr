@@ -2,4 +2,4 @@
     <div class="list-group-item">
           <%= f.input :on_behalf_of, collection: current_user.can_make_deposits_for.map(&:user_key), prompt: "Yourself" %>
         </div>
- <% end %>
+<% end %>
